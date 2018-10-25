@@ -1,4 +1,9 @@
-﻿;
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+; #Warn  ; Enable warnings to assist with detecting common errors.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+
+;
 ; AutoHotkey Version: 1.x
 ; Language:       English
 ; Platform:       Win9x/NT
@@ -10,10 +15,6 @@
 ; Severial tunes are made so that the script works well when typing in fast speed
 ; Note that repeating space no longer works
 
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 AnyKeyPressedOtherThanSpace(mode = "P") {
     keys = 1234567890-=qwertyuiop[]\asdfghjkl;'zxcvbnm,./
