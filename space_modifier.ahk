@@ -15,17 +15,17 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-;AnyKeyPressedOtherThanSpace(mode = "P") {
-;    keys = 1234567890-=qwertyuiop[]\asdfghjkl;'zxcvbnm,./
-;    Loop, Parse, keys
-;    {
-;        isDown :=  GetKeyState(A_LoopField, mode)
-;        if(isDown)
-;            return True
-;    }
-;
-;    return False
-;}
+AnyKeyPressedOtherThanSpace(mode = "P") {
+    keys = 1234567890-=qwertyuiop[]\asdfghjkl;'zxcvbnm,./
+    Loop, Parse, keys
+    {
+        isDown :=  GetKeyState(A_LoopField, mode)
+        if(isDown)
+            return True
+    }
+
+    return False
+}
 
 
 supressed := False
@@ -125,29 +125,42 @@ Space::
                 SendKey("{Down}")
             else if (UserInput == "s")
                 SendKey("{Left}")
-            else if (UserInput == "a")
-            ;    SendKey("{Left}", 8)
+            else if (UserInput == "a"){
+                if WinExist("ahk_exe atom.exe")
+                    {
+                    WinActivate, ahk_exe atom.exe
+                    }
+                else
                 run, C:\Users\garyfan\AppData\Local\atom\atom.exe
-            else if (UserInput == "f")
+            }else if (UserInput == "f")
                 SendKey("{Right}")
             ;else if (UserInput == "g")
-            ;    SendKey("{Right}", 8)
+                ;SendKey("{Right}", 8)
             else if (UserInput == "w")
                 SendKey("{Home}")
             else if (UserInput == "r")
                 SendKey("{End}")
-            else if (UserInput == "c")
-                ;SendKey("{BS}")
+            else if (UserInput == "c"){
+                if WinExist("ahk_exe chrome.exe")
+                    {
+                    WinActivate, ahk_exe chrome.exe
+                    }
+                else
                 run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-            else if (UserInput == "x")
+            }else if (UserInput == "x")
                 SendKey("{BS}", 6)
             else if (UserInput == "v")
                 SendKey("{DEL}")
             else if (UserInput == "b")
                 SendKey("{DEL}", 6)
-            else if (UserInput == "t")
+            else if (UserInput == "t"){
+                if WinExist("ahk_exe typora.exe")
+                    {
+                    WinActivate, ahk_exe typora.exe
+                    }
+                else
                 run, C:\Program Files\Typora\Typora.exe
-            else if (UserInput == "8"){
+            }else if (UserInput == "8"){
                 RestoreInput()
                 break
             }else if (UserInput == "`t")
@@ -158,3 +171,4 @@ Space::
     }
     RestoreInput()
     return
+
