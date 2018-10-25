@@ -10,23 +10,22 @@
 ; Severial tunes are made so that the script works well when typing in fast speed
 ; Note that repeating space no longer works
 
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-StringCaseSense, On
 
-AnyKeyPressedOtherThanSpace(mode = "P") {
-    keys = 1234567890-=qwertyuiop[]\asdfghjkl;'zxcvbnm,./
-    Loop, Parse, keys
-    {        
-        isDown :=  GetKeyState(A_LoopField, mode)
-        if(isDown)
-            return True
-    }
-
-    return False
-}
+;AnyKeyPressedOtherThanSpace(mode = "P") {
+;    keys = 1234567890-=qwertyuiop[]\asdfghjkl;'zxcvbnm,./
+;    Loop, Parse, keys
+;    {
+;        isDown :=  GetKeyState(A_LoopField, mode)
+;        if(isDown)
+;            return True
+;    }
+;
+;    return False
+;}
 
 
 supressed := False
@@ -50,7 +49,7 @@ UpdateModifierStates(){
         return
     }
     ModifierStates := ""
-    
+
     if GetKeyState("LWin", "P") || GetKeyState("RWin", "P")    {
         ModifierStates .= "#"
     }
@@ -74,19 +73,19 @@ SendKey(Key, num=1){
         Send, %ModifierStates%%Key%
     }
 }
- 
+
 ReleaseModifier(){
     global space_up
     if (not space_up){
         space_up := true
     }
-    Send, {RShift}
+    Send, {RControl}
 }
- 
+
 Space Up::
     Send {Blind}{Space up}
     space_up := true
-    SendEvent, {RShift}
+    SendEvent, {RControl}
     return
 Space::
     if AnyKeyPressedOtherThanSpace(){
@@ -96,10 +95,10 @@ Space::
     if (GetKeyState(LShift, mode)){
         SendInput ^{Space}
         Return
-    }    
+    }
     inputed := False
     space_up := False
-    input, UserInput, L1 T0.05, {RShift}
+    input, UserInput, L1 T0.05, {RControl}
     if (space_up) {
         Send, {Blind}{Space}
         return
@@ -109,7 +108,7 @@ Space::
     }
     SetTimer, ReleaseModifier, -18000
     while true{
-        input, UserInput, L1, {RShift}
+        input, UserInput, L1, {RControl}
         if (space_up) {
             if (!inputed){
                 Send, {Blind}{Space}
@@ -120,21 +119,21 @@ Space::
             StringLower, UserInput, UserInput
             UpdateModifierStates()
             SupressInput()
-            if (UserInput == "e")
+            if (UserInput == "w")
                 SendKey("{Up}")
-            else if (UserInput == "d")
-                SendKey("{Down}")
             else if (UserInput == "s")
-                SendKey("{Left}")
+                SendKey("{Down}")
             else if (UserInput == "a")
-                SendKey("{Left}", 8)
-            else if (UserInput == "f")
+                SendKey("{Left}")
+            ;else if (UserInput == "a")
+            ;    SendKey("{Left}", 8)
+            else if (UserInput == "d")
                 SendKey("{Right}")
-            else if (UserInput == "g")
-                SendKey("{Right}", 8)
-            else if (UserInput == "w")
+            ;else if (UserInput == "g")
+            ;    SendKey("{Right}", 8)
+            else if (UserInput == "q")
                 SendKey("{Home}")
-            else if (UserInput == "r")
+            else if (UserInput == "e")
                 SendKey("{End}")
             else if (UserInput == "c")
                 SendKey("{BS}")
