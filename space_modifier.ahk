@@ -149,10 +149,15 @@ Space::
                 run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
             }else if (UserInput == "x")
                 SendKey("{BS}", 6)
-            else if (UserInput == "v")
+            else if (UserInput == "v"){
+                if WinExist("ahk_exe wechat.exe")
+                    {
+                    WinActivate, ahk_exe wechat.exe
+                    }
+                else
+                run, C:\Program Files (x86)\Tencent\WeChat\wechat.exe
+            }else if (UserInput == "b")
                 SendKey("{DEL}")
-            else if (UserInput == "b")
-                SendKey("{DEL}", 6)
             else if (UserInput == "t"){
                 if WinExist("ahk_exe typora.exe")
                     {
@@ -171,4 +176,3 @@ Space::
     }
     RestoreInput()
     return
-
