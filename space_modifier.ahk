@@ -148,15 +148,48 @@ Space::
                     }
                 else
                 run, C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-            }else if (UserInput == "x")
-                SendKey("{BS}", 6)
-            else if (UserInput == "v"){
-                if WinExist("ahk_exe wechat.exe")
+            }else if (UserInput == "x"){
+                if WinExist("ahk_exe mobaxterm.exe")
                     {
-                    WinActivate, ahk_exe wechat.exe
+                    WinActivate, ahk_exe mobaxterm.exe
                     }
                 else
-                run, C:\Program Files (x86)\Tencent\WeChat\wechat.exe
+                run, C:\Program Files (x86)\Mobatek\MobaXterm\MobaXterm.exe
+            }else if (UserInput == "p"){
+                if WinExist("ahk_exe winscp.exe")
+                    {
+                    WinActivate, ahk_exe winscp.exe
+                    }
+                else
+                run, C:\Program Files (x86)\WinSCP\WinSCP.exe
+            }else if (UserInput == "o"){
+                if WinExist("ahk_exe outlook.exe")
+                    {
+                    WinActivate, ahk_exe outlook.exe
+                    }
+                else
+                run, C:\Program Files (x86)\Microsoft Office\Root\Office16\OUTLOOK.exe
+            }else if (UserInput == "v"){
+                if WinExist("ahk_exe skype.exe")
+                    {
+                    WinActivate, ahk_exe skype.exe
+                    }
+                else
+                run, C:\Program Files (x86)\Microsoft\Skype for Desktop\Skype.exe
+            }else if (UserInput == "u"){
+                if WinExist("ahk_exe vmplayer.exe")
+                    {
+                    WinActivate, ahk_exe vmplayer.exe
+                    }
+                else
+                run, C:\Program Files (x86)\VMware\VMware Player\vmplayer.exe
+            }else if (UserInput == "$"){
+                if WinExist("ahk_exe snippingtool.exe")
+                    {
+                    WinActivate, ahk_exe snippingtool.exe
+                    }
+                else
+                run, C:\Windows\System32\SnippingTool.exe
             }else if (UserInput == "b")
                 SendKey("{DEL}")
             else if (UserInput == "t"){
