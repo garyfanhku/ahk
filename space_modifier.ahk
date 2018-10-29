@@ -183,6 +183,13 @@ Space::
                     }
                 else
                 run, C:\Program Files (x86)\VMware\VMware Player\vmplayer.exe
+            }else if (UserInput == "z"){
+                if WinExist("ahk_exe zotero.exe")
+                    {
+                    WinActivate, ahk_exe zotero.exe
+                    }
+                else
+                run, C:\Program Files (x86)\Zotero\zotero.exe
             }else if (UserInput == "$"){
                 if WinExist("ahk_exe snippingtool.exe")
                     {
